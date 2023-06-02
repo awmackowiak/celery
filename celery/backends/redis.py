@@ -229,6 +229,11 @@ class RedisBackend(BaseKeyValueStoreBackend, AsyncBackendMixin):
         retry_on_timeout = _get('redis_retry_on_timeout')
         socket_keepalive = _get('redis_socket_keepalive')
         health_check_interval = _get('redis_backend_health_check_interval')
+        socket_keepalive_options = self._transport_options['socket_keepalive_options']
+
+        import logging
+        logger = logging.getLogger()
+        logger.info('!!!!TEST ARTUR!!!: {}', socket_keepalive)
 
         self.connparams = {
             'host': _get('redis_host') or 'localhost',
@@ -259,6 +264,12 @@ class RedisBackend(BaseKeyValueStoreBackend, AsyncBackendMixin):
         # absent in redis.connection.UnixDomainSocketConnection
         if socket_keepalive:
             self.connparams['socket_keepalive'] = socket_keepalive
+            import logging
+            logger = logging.getLogger()
+            logger.info('!!!!SOCKET ARTUR: {}', socket_keepalive_options)
+            if socket_keepalive_options:
+                self.connparams['socket_keepalive_options'] = socket_keepalive_options
+                logger.info('!!!!ARTUR: {}', self.connparams)
 
         # "redis_backend_use_ssl" must be a dict with the keys:
         # 'ssl_cert_reqs', 'ssl_ca_certs', 'ssl_certfile', 'ssl_keyfile'
