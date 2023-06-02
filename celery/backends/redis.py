@@ -233,7 +233,7 @@ class RedisBackend(BaseKeyValueStoreBackend, AsyncBackendMixin):
 
         import logging
         logger = logging.getLogger()
-        logger.info('!!!!TEST ARTUR!!!: {}', socket_keepalive)
+        logger.info('!!!!TEST ARTUR!!!: {}'.format(socket_keepalive))
 
         self.connparams = {
             'host': _get('redis_host') or 'localhost',
@@ -266,10 +266,10 @@ class RedisBackend(BaseKeyValueStoreBackend, AsyncBackendMixin):
             self.connparams['socket_keepalive'] = socket_keepalive
             import logging
             logger = logging.getLogger()
-            logger.info('!!!!SOCKET ARTUR: {}', socket_keepalive_options)
+            logger.info('!!!!SOCKET ARTUR: {}'.format(socket_keepalive_options))
             if socket_keepalive_options:
                 self.connparams['socket_keepalive_options'] = socket_keepalive_options
-                logger.info('!!!!ARTUR: {}', self.connparams)
+                logger.info('!!!!ARTUR: {}'.format(self.connparams))
 
         # "redis_backend_use_ssl" must be a dict with the keys:
         # 'ssl_cert_reqs', 'ssl_ca_certs', 'ssl_certfile', 'ssl_keyfile'
