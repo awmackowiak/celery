@@ -1,5 +1,6 @@
 billiard>=4.2.0,<5.0
-kombu>=5.3.4,<6.0
+# kombu>=5.3.4,<6.0
+-e git+https://github.com/awmackowiak/kombu@redis_connections#egg=kombu
 vine>=5.1.0,<6.0
 click>=8.1.2,<9.0
 click-didyoumean>=0.3.0
